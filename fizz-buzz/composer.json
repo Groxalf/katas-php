@@ -8,5 +8,8 @@
             "FizzBuzz\\": "src",
             "FizzBuzz\\Test\\": "test"
         }
+    },
+    "scripts" : {
+        "test" : "phpunit"
     }
 }
