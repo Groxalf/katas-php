@@ -1,3 +1,10 @@
+My solutions of Luis Rovirosa's PHP Katas.
+
+Here is the url of his repository on Github:
+
+    https://github.com/luisrovirosa/katas-php
+
+
 # Installation
 1. Download the code using GIT or with the [downloading the zip](https://github.com/luisrovirosa/katas-php/archive/master.zip) link
 - Go into the folder of the kata you want to practice. Eg: cd fizz-buzz
