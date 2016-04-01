@@ -14,29 +14,19 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_return_a_number_when_is_not_divisible_by_3_or_5() {
-        $this->assertIsNumber(1);
-        $this->assertIsNumber(2);
-        $this->assertIsNumber(4);
-    }
-
-    /** @test */
-    public function it_should_return_fizz_when_number_is_divisible_by_3() {
-        $this->assertIsFizz(3);
-        $this->assertIsFizz(6);
-        $this->assertIsFizz(9);
-    }
-
-    /** @test */
-    public function it_should_return_buzz_when_number_is_divisible_by_5() {
-        $this->assertIsBuzz(5);
-        $this->assertIsBuzz(10);
-    }
-
-    /** @test */
-    public function it_should_return_fizzbuzz_when_number_is_divisible_by_3_and_5() {
-        $this->assertIsFizzBuzz(15);
-        $this->assertIsFizzBuzz(30);
+    public function it_should_return_100_elements_properly_converted() {
+        $elements = $this->fizzBuzz->generateChain();
+        $this->assertTrue(sizeof($elements) == 100);
+        $this->assertIsNumber($elements[0]);
+        $this->assertIsNumber($elements[1]);
+        $this->assertIsNumber($elements[2]);
+        $this->assertIsFizz($elements[3]);
+        $this->assertIsFizz($elements[6]);
+        $this->assertIsFizz($elements[9]);
+        $this->assertIsBuzz($elements[5]);
+        $this->assertIsBuzz($elements[10]);
+        $this->assertIsFizzBuzz($elements[15]);
+        $this->assertIsFizzBuzz($elements[30]);
     }
 
     /**
@@ -44,27 +34,27 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function assertIsNumber($number)
     {
-        $this->assertEquals($this->fizzBuzz->parse($number), "$number");
+        $this->assertEquals($number, "$number");
     }
 
     /**
      * @param $number
      */
     private function assertIsFizz($number) {
-        $this->assertEquals($this->fizzBuzz->parse($number), 'Fizz');
+        $this->assertEquals($number, 'Fizz');
     }
 
     /**
      * @param $number
      */
     private function assertIsBuzz($number) {
-        $this->assertEquals($this->fizzBuzz->parse($number), 'Buzz');
+        $this->assertEquals($number, 'Buzz');
     }
 
     /**
      * @param $number
      */
     private function assertIsFizzBuzz($number) {
-        $this->assertEquals($this->fizzBuzz->parse($number), 'FizzBuzz');
+        $this->assertEquals($number, 'FizzBuzz');
     }
 }

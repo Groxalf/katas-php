@@ -4,7 +4,10 @@ namespace FizzBuzz;
 
 class FizzBuzz
 {
-    public function parse($number)
+
+    const CHAIN_SIZE = 100;
+
+    private function parse($number)
     {
         return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
     }
@@ -20,4 +23,14 @@ class FizzBuzz
         if ($number % 5 == 0) return 'Buzz';
         return false;
     }
+
+    public function generateChain()
+    {
+        $elements = [];
+        for ($i = 0; $i < self::CHAIN_SIZE; $i++) {
+            array_push($elements, $this->parse($i));
+        }
+        return $elements;
+    }
+
 }
