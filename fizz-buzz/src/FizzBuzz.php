@@ -6,19 +6,18 @@ class FizzBuzz
 {
     public function parse($number)
     {
-        $result = '';
-        if ($this->isDivisibleByThree($number)) $result .= 'Fizz';
-        if ($this->isDivisibleByFive($number)) $result .= 'Buzz';
-        return (!empty($result)) ?  $result : strval($number);
+        return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
     }
 
-    private function isDivisibleByThree($number)
+    private function checkForFizz($number)
     {
-        return $number % 3 == 0;
+        if ($number % 3 == 0) return 'Fizz';
+        return false;
     }
 
-    private function isDivisibleByFive($number)
+    private function checkForBuzz($number)
     {
-        return $number % 5 == 0;
+        if ($number % 5 == 0) return 'Buzz';
+        return false;
     }
 }
