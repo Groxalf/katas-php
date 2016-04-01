@@ -6,30 +6,68 @@ use FizzBuzz\FizzBuzz;
 
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
-    public function test_it_should_return_a_number_when_is_not_divisible_by_3_or_5()
+    private $fizzBuzz;
+
+    public function setUp() {
+        $this->fizzBuzz = new FizzBuzz();
+    }
+
+    /** @test */
+    public function it_should_return_a_number_when_is_not_divisible_by_3_or_5()
     {
-        $fizzBuzz = new FizzBuzz();
-        $this->assertEquals($fizzBuzz->parse(1), '1');
-        $this->assertEquals($fizzBuzz->parse(2), '2');
-        $this->assertEquals($fizzBuzz->parse(4), '4');
+        $this->assertIsNumber(1);
+        $this->assertIsNumber(2);
+        $this->assertIsNumber(3);
     }
 
-    public function test_it_should_return_fizz_when_number_is_divisible_by_3() {
-        $fizzBuzz = new FizzBuzz();
-        $this->assertEquals($fizzBuzz->parse(3), 'Fizz');
-        $this->assertEquals($fizzBuzz->parse(6), 'Fizz');
-        $this->assertEquals($fizzBuzz->parse(9), 'Fizz');
+    /** @test */
+    public function it_should_return_fizz_when_number_is_divisible_by_3() {
+        $this->assertIsFizz(3);
+        $this->assertIsFizz(6);
+        $this->assertIsFizz(9);
     }
 
-    public function test_it_should_return_buzz_when_number_is_divisible_by_5() {
-        $fizzBuzz = new FizzBuzz();
-        $this->assertEquals($fizzBuzz->parse(5), 'Buzz');
-        $this->assertEquals($fizzBuzz->parse(10), 'Buzz');
+    /** @test */
+    public function it_should_return_buzz_when_number_is_divisible_by_5() {
+        $this->assertIsBuzz(5);
+        $this->assertIsBuzz(10);
     }
-    
-    public function test_it_should_return_fizzbuzz_when_number_is_divisible_by_3_and_5() {
-        $fizzBuzz = new FizzBuzz();
-        $this->assertEquals($fizzBuzz->parse(15), 'FizzBuzz');
-        $this->assertEquals($fizzBuzz->parse(30), 'FizzBuzz');
+
+    /** @test */
+    public function it_should_return_fizzbuzz_when_number_is_divisible_by_3_and_5() {
+        $this->assertIsFizzBuzz(15);
+        $this->assertIsFizzBuzz(30);
+    }
+
+    /**
+     * @param $number
+     */
+    private function assertIsNumber($number)
+    {
+        $this->assertEquals($this->fizzBuzz->parse($number), '$number');
+    }
+
+    /**
+     * @param $numer
+     */
+    private function assertIsFizz($numer)
+    {
+        $this->assertEquals($this->fizzBuzz->parse($numer), 'Fizz');
+    }
+
+    /**
+     * @param $number
+     */
+    private function assertIsBuzz($number)
+    {
+        $this->assertEquals($this->fizzBuzz->parse($number), 'Buzz');
+    }
+
+    /**
+     * @param $number
+     */
+    private function assertIsFizzBuzz($number)
+    {
+        $this->assertEquals($this->fizzBuzz->parse($number), 'FizzBuzz');
     }
 }
