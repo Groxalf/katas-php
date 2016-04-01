@@ -6,27 +6,26 @@ use FizzBuzz\FizzBuzz;
 
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var  FizzBuzz */
-    private $fizzBuzz;
+
+    private $elements;
 
     public function setUp() {
-        $this->fizzBuzz = new FizzBuzz();
+        $fizzBuzz = new FizzBuzz();
+        $this->elements = $fizzBuzz->generateChain();
     }
 
     /** @test */
     public function it_should_return_100_elements_properly_converted() {
-        $elements = $this->fizzBuzz->generateChain();
-        $this->assertTrue(sizeof($elements) == 100);
-        $this->assertIsNumber($elements[0]);
-        $this->assertIsNumber($elements[1]);
-        $this->assertIsNumber($elements[2]);
-        $this->assertIsFizz($elements[3]);
-        $this->assertIsFizz($elements[6]);
-        $this->assertIsFizz($elements[9]);
-        $this->assertIsBuzz($elements[5]);
-        $this->assertIsBuzz($elements[10]);
-        $this->assertIsFizzBuzz($elements[15]);
-        $this->assertIsFizzBuzz($elements[30]);
+        $this->assertEquals(100, sizeof($this->elements));
+        $this->assertIsNumber($this->positionForNumber(1));
+        $this->assertIsNumber($this->positionForNumber(2));
+        $this->assertIsFizz($this->positionForNumber(3));
+        $this->assertIsFizz($this->positionForNumber(6));
+        $this->assertIsFizz($this->positionForNumber(9));
+        $this->assertIsBuzz($this->positionForNumber(5));
+        $this->assertIsBuzz($this->positionForNumber(10));
+        $this->assertIsFizzBuzz($this->positionForNumber(15));
+        $this->assertIsFizzBuzz($this->positionForNumber(30));
     }
 
     /**
@@ -56,5 +55,14 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function assertIsFizzBuzz($number) {
         $this->assertEquals($number, 'FizzBuzz');
+    }
+
+    /**
+     * @param $number
+     * @return mixed
+     */
+    private function positionForNumber($number)
+    {
+        return $this->elements[$number - 1];
     }
 }
