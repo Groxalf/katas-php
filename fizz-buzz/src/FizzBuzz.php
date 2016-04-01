@@ -9,12 +9,10 @@ class FizzBuzz
 
     public function generateChain()
     {
-        return array_map([$this, 'parse'], range(1, self::CHAIN_SIZE));
-    }
-
-    private function parse($number)
-    {
-        return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
+        $elements = range(1, self::CHAIN_SIZE);
+        return array_map(function ($number) {
+            return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
+        }, $elements);
     }
 
     private function checkForFizz($number)
