@@ -11,8 +11,12 @@ class FizzBuzz
     {
         $elements = range(1, self::CHAIN_SIZE);
         return array_map(function ($number) {
-            return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
+            return $this->generateElement($number);
         }, $elements);
+    }
+
+    private function generateElement($number) {
+        return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
     }
 
     private function checkForFizz($number)
