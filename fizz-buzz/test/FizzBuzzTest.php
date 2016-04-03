@@ -16,8 +16,6 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 
     /** @test */
     public function it_should_return_100_elements_properly_converted() {
-        $this->assertIsNumber(1);
-        $this->assertIsNumber(2);
         $this->assertIsFizz(3);
         $this->assertIsFizz(6);
         $this->assertIsFizz(9);
@@ -30,6 +28,12 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_have_a_total_of_one_hundred_elements() {
         $this->assertCount(100, $this->elements);
+    }
+
+    /** @test */
+    public function it_should_have_elements_not_divisible_by_3_or_5_that_are_numbers() {
+        $this->assertIsNumber(1);
+        $this->assertIsNumber(2);
     }
 
     /**
