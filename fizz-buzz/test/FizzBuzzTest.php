@@ -16,7 +16,6 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 
     /** @test */
     public function it_should_return_100_elements_properly_converted() {
-        $this->assertCount(100, $this->elements);
         $this->assertIsNumber(1);
         $this->assertIsNumber(2);
         $this->assertIsFizz(3);
@@ -26,6 +25,11 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->assertIsBuzz(10);
         $this->assertIsFizzBuzz(15);
         $this->assertIsFizzBuzz(30);
+    }
+
+    /** @test */
+    public function it_should_have_a_total_of_one_hundred_elements() {
+        $this->assertCount(100, $this->elements);
     }
 
     /**
@@ -67,7 +71,9 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function positionForNumber($number)
     {
-
-        return $this->elements[$number - 1];
+        $fizzBuzz = new FizzBuzz();
+        $elements = $fizzBuzz->generateChain();
+        return $elements[$number - 1];
     }
+
 }
