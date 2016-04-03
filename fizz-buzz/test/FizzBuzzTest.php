@@ -7,16 +7,9 @@ use FizzBuzz\FizzBuzz;
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
 
-    private $elements;
-
-    public function setUp() {
-        $fizzBuzz = new FizzBuzz();
-        $this->elements = $fizzBuzz->generateChain();
-    }
-
     /** @test */
     public function it_should_have_a_total_of_one_hundred_elements() {
-        $this->assertCount(100, $this->elements);
+        $this->assertCount(100, $this->generateFizzBuzzChain());
     }
 
     /** @test */
@@ -83,9 +76,15 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function positionForNumber($number)
     {
-        $fizzBuzz = new FizzBuzz();
-        $elements = $fizzBuzz->generateChain();
+        $elements = $this->generateFizzBuzzChain();
         return $elements[$number - 1];
     }
+
+    private function generateFizzBuzzChain()
+    {
+        $fizzBuzz = new FizzBuzz();
+        return $fizzBuzz->generateChain();
+    }
+
 
 }
