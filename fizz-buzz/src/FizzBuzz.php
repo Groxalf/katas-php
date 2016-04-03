@@ -10,10 +10,9 @@ class FizzBuzz
 
     public function generateChain()
     {
-        $elements = range(self::INITIAL_VALUE, self::LAST_VALUE);
         return array_map(function ($number) {
             return $this->generateElement($number);
-        }, $elements);
+        }, range(self::INITIAL_VALUE, self::LAST_VALUE));
     }
 
     private function generateElement($number) {
