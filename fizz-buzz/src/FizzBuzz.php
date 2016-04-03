@@ -27,7 +27,7 @@ class FizzBuzz
 
     private function checkForBuzz($number)
     {
-        if ($number % 5 == 0) return 'Buzz';
+        if ($this->isDivisibleByFive($number)) return 'Buzz';
         return false;
     }
 
@@ -38,6 +38,15 @@ class FizzBuzz
     private function isDivisibleByThree($number)
     {
         return $number % 3 == 0;
+    }
+
+    /**
+     * @param $number
+     * @return bool
+     */
+    private function isDivisibleByFive($number)
+    {
+        return $number % 5 == 0;
     }
 
 }
