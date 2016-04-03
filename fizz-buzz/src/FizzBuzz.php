@@ -5,11 +5,12 @@ namespace FizzBuzz;
 class FizzBuzz
 {
 
-    const CHAIN_SIZE = 100;
+    const INITIAL_VALUE = 1;
+    const LAST_VALUE = 100;
 
     public function generateChain()
     {
-        $elements = range(1, self::CHAIN_SIZE);
+        $elements = range(self::INITIAL_VALUE, self::LAST_VALUE);
         return array_map(function ($number) {
             return $this->generateElement($number);
         }, $elements);
