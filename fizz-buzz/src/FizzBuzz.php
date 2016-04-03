@@ -16,19 +16,20 @@ class FizzBuzz
     }
 
     private function generateElement($number) {
+
         return $this->checkForFizz($number) . $this->checkForBuzz($number) ?: strval($number);
     }
 
     private function checkForFizz($number)
     {
         if ($this->isDivisibleByThree($number)) return 'Fizz';
-        return false;
+        return '';
     }
 
     private function checkForBuzz($number)
     {
         if ($this->isDivisibleByFive($number)) return 'Buzz';
-        return false;
+        return '';
     }
 
     /**
