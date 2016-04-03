@@ -16,7 +16,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 
     /** @test */
     public function it_should_return_100_elements_properly_converted() {
-        $this->assertEquals(100, sizeof($this->elements));
+        $this->assertCount(100, $this->elements);
         $this->assertIsNumber(1);
         $this->assertIsNumber(2);
         $this->assertIsFizz(3);
