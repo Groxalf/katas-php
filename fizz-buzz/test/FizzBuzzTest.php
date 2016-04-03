@@ -17,15 +17,15 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_should_return_100_elements_properly_converted() {
         $this->assertEquals(100, sizeof($this->elements));
-        $this->assertIsNumber($this->positionForNumber(1));
-        $this->assertIsNumber($this->positionForNumber(2));
-        $this->assertIsFizz($this->positionForNumber(3));
-        $this->assertIsFizz($this->positionForNumber(6));
-        $this->assertIsFizz($this->positionForNumber(9));
-        $this->assertIsBuzz($this->positionForNumber(5));
-        $this->assertIsBuzz($this->positionForNumber(10));
-        $this->assertIsFizzBuzz($this->positionForNumber(15));
-        $this->assertIsFizzBuzz($this->positionForNumber(30));
+        $this->assertIsNumber(1);
+        $this->assertIsNumber(2);
+        $this->assertIsFizz(3);
+        $this->assertIsFizz(6);
+        $this->assertIsFizz(9);
+        $this->assertIsBuzz(5);
+        $this->assertIsBuzz(10);
+        $this->assertIsFizzBuzz(15);
+        $this->assertIsFizzBuzz(30);
     }
 
     /**
@@ -33,28 +33,32 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function assertIsNumber($number)
     {
-        $this->assertEquals($number, "$number");
+        $position = $this->positionForNumber($number);
+        $this->assertEquals($position, "$position");
     }
 
     /**
      * @param $number
      */
     private function assertIsFizz($number) {
-        $this->assertEquals($number, 'Fizz');
+        $position = $this->positionForNumber($number);
+        $this->assertEquals($position, 'Fizz');
     }
 
     /**
      * @param $number
      */
     private function assertIsBuzz($number) {
-        $this->assertEquals($number, 'Buzz');
+        $position = $this->positionForNumber($number);
+        $this->assertEquals($position, 'Buzz');
     }
 
     /**
      * @param $number
      */
     private function assertIsFizzBuzz($number) {
-        $this->assertEquals($number, 'FizzBuzz');
+        $position = $this->positionForNumber($number);
+        $this->assertEquals($position, 'FizzBuzz');
     }
 
     /**
@@ -63,6 +67,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
      */
     private function positionForNumber($number)
     {
+
         return $this->elements[$number - 1];
     }
 }
